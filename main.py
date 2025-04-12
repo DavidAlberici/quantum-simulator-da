@@ -26,11 +26,10 @@ class QRegistry:
             raise ValueError("Gate must be 2x2")
         if target > self.num_qubits:
             raise ValueError("Target qbit is outside the register")
-        self
         self.state = gate.dot(self.state)
         return self
 
-    def apply_gate(self, gate, target):
+    def apply_gate_sparse(self, gate, target):
         if gate.shape[0] != gate.shape[1]:
             raise ValueError("Gate must be a square")
         gate_size = int(np.log2(gate.shape[0]))
@@ -38,9 +37,21 @@ class QRegistry:
         if target > self.num_qubits - 1 - (gate_size - 1):
             raise ValueError(
                 "Target qbit is outside the register. Target qbit: " + str(target) + "; gate size: " + str(gate_size))
-        fullGate = self.__addLeftIdentityGates(gate, target)
-        fullGate = self.__addRightIdentityGates(fullGate, self.num_qubits - target - 1 - (gate_size - 1))
-        self.state = fullGate.dot(self.state)
+        full_gate = self.__add_left_identity_gates(gate, target)
+        full_gate = self.__add_right_identity_gates(full_gate, self.num_qubits - target - 1 - (gate_size - 1))
+        self.state = full_gate.dot(self.state)
+        return self
+
+    def apply_gate(self, gate, target):
+        if gate.shape[0] != gate.shape[1]:
+            raise ValueError("Gate must be a square")
+        gate_size = int(np.log2(gate.shape[0]))
+        if target > self.num_qubits - 1 - (gate_size - 1):
+            raise ValueError(
+                "Target qbit is outside the register. Target qbit: " + str(target) + "; gate size: " + str(gate_size))
+        full_gate = self.__add_left_identity_gates(gate, target)
+        full_gate = self.__add_right_identity_gates(full_gate, self.num_qubits - target - 1 - (gate_size - 1))
+        self.state = full_gate.dot(self.state)
         return self
 
     # Probabilidad de obtener el valor value (1,2,3,4...) en todo el registro
@@ -67,19 +78,19 @@ class QRegistry:
 
     def get_fixed_total_prob(self, total_prob):
         max_error = 0.001
-        if (total_prob > 1 and total_prob - max_error < 1):
+        if total_prob > 1 > total_prob - max_error:
             return 1
-        elif (total_prob > 1):
+        elif total_prob > 1:
             raise ValueError("Error happend during the calculation, the probability is higher than 1")
         else:
             return total_prob
 
     # Forza el qubit target a colapsar al valor value (0,1)
     def collapse(self, target, value, prob_one=None):
-        if (prob_one == None):
-            return self.__collapseWithoutProb(target, value)
+        if prob_one is None:
+            return self.__collapse_without_prob(target, value)
         else:
-            return self.__collapseWithProb(target, value, prob_one)
+            return self.__collapse_with_prob(target, value, prob_one)
 
     def get_density_matrix(self):
         return np.dot(self.state, self.state.conj().T)
@@ -89,61 +100,65 @@ class QRegistry:
             raise ValueError("Cannot return bloch coords for systems of more than 1 qbit")
         theta = np.arccos(self.state[0]) * 2
         phi = np.angle(self.state[1]) - np.angle(self.state[0])
-        if (deg):
+        if deg:
             return theta * 360 / (2 * np.pi), phi * 360 / (2 * np.pi)
         else:
             return theta, phi
 
     def measure(self, target):
         prob_one = self.qbit_prob(target)
-        value = int(self.rng.random() < prob_one)
+        value = 1 if self.rng.random() < prob_one else 0
         self.collapse(target, value, value)
         return self, value
 
-    def __addLeftIdentityGates(self, gate, qtty):
-        for i in range(qtty):
-            gate = sp.sparse.kron(Gates.I_sparse(1), gate, format="csr")
-            # gate = np.kron(Gates.I(1), gate)
+    def __add_left_identity_gates(self, gate, qtty):
+        for _ in range(qtty):
+            gate = np.kron(gates.I(1), gate)
         return gate
 
-    def __addRightIdentityGates(self, gate, qtty):
-        for i in range(qtty):
-            gate = sp.sparse.kron(gate, Gates.I_sparse(1), format="csr")
-            # gate = np.kron(gate, Gates.I(1))
+    def __add_right_identity_gates(self, gate, qtty):
+        for _ in range(qtty):
+            gate = np.kron(gate, gates.I(1))
         return gate
 
-    def __collapseWithoutProb(self, target, value):
+    def __add_left_identity_gates_sparse(self, gate, qtty):
+        for _ in range(qtty):
+            gate = sp.sparse.kron(gates.I_sparse(1), gate, format="csr")
+        return gate
+
+    def __add_right_identity_gates_sparse(self, gate, qtty):
+        for _ in range(qtty):
+            gate = sp.sparse.kron(gate, gates.I_sparse(1), format="csr")
+        return gate
+
+    def __collapse_without_prob(self, target, value):
         if target > self.num_qubits - 1:
             raise ValueError("Target qbit is outside the register. Target qbit: " + str(target))
-        isOne = True
-        period = 2 ** (target)
+        is_one = True
+        period = 2 ** target
         for i in range(0, self.state.size):
             if i % period == 0:
-                isOne = not isOne
-            if isOne and value == 0:
-                self.state[i] = 0
-            elif not isOne and value == 1:
+                is_one = not is_one
+            if (is_one and value == 0) or (not is_one and value == 1):
                 self.state[i] = 0
         norm = np.linalg.norm(self.state)
         for i in range(self.state.size):
             self.state[i] /= norm
         return self
 
-    def __collapseWithProb(self, target, value, prob_one):
+    def __collapse_with_prob(self, target, value, prob_one):
         if target > self.num_qubits - 1:
             raise ValueError("Target qbit is outside the register. Target qbit: " + str(target))
-        isOne = True
-        period = 2 ** (target)
+        is_one = True
+        period = 2 ** target
         for i in range(0, self.state.size):
             if i % period == 0:
-                isOne = not isOne
-            if isOne and value == 0:
-                self.state[i] = 0
-            elif not isOne and value == 1:
+                is_one = not is_one
+            if (is_one and value == 0) or (not is_one and value == 1):
                 self.state[i] = 0
 
         amp = 0
-        if (value == 1):
+        if value == 1:
             amp = prob_one ** (1 / 2)
         else:
             amp = (1 - prob_one) ** (1 / 2)
@@ -155,19 +170,19 @@ class QRegistry:
 if __name__ == '__main__':
     print('PyCharm')
 
-    num_qbits = 15
+    num_qbits = 10
     # Este Qreg es el "nuevo", con scipy
     qreg = QRegistry(num_qbits)
-    qreg.apply_gate(Gates.x, num_qbits - 1)
+    qreg.apply_gate(gates.x, num_qbits - 1)
     print(qreg.get_state()[1])
-    print(qreg.measure(0))
+    print(qreg.measure(0)[1])
     # 0.2s para 14qbits
 
     # Este Qreg usa np.array, sin scipy
-    qreg = QRegistry3103(num_qbits)
-    qreg.apply_gate(Gates.x, num_qbits - 1)
-    print(qreg.get_state()[1])
-    print(qreg.measure(0))
+    # qreg = QRegistry3103(num_qbits)
+    # qreg.apply_gate(gates.x, num_qbits - 1)
+    # print(qreg.get_state()[1])
+    # print(qreg.measure(0))
     # #7.8s para 14qbits
 
     ## Usar multiprocessing para intentar paralelizar!

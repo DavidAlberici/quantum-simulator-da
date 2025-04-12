@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="WIP">
-      <change afterPath="$PROJECT_DIR$/sparse-array-playground.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Copy pasted what I have in class from 02/04/25">
       <change beforePath="$PROJECT_DIR$/gates.py" beforeDir="false" afterPath="$PROJECT_DIR$/gates.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/q_registry_qbit.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/q_registry_qbit_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +56,29 @@
     "ignore.virus.scanning.warn.message": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.q_registry_qbit">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="simulador-da" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-da" />
       <option name="ENV_FILES" value="" />
@@ -137,28 +153,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_merge_qbits_lists_correctly" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="simulador-da" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_merge_qbits_lists_correctly&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.q_registry_qbit" />
         <item itemvalue="Python.main2" />
         <item itemvalue="Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState" />
         <item itemvalue="Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_calculate_amplitudes_correctly" />
-        <item itemvalue="Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_merge_qbits_lists_correctly" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744449671520</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Copy pasted what I have in class from 02/04/25">
+      <option name="closed" value="true" />
+      <created>1744450102710</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744450102710</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -240,6 +249,7 @@
     <MESSAGE value="First version of q_registry_qbit.py" />
     <MESSAGE value="Added gitignore" />
     <MESSAGE value="WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP" />
+    <MESSAGE value="Copy pasted what I have in class from 02/04/25" />
+    <option name="LAST_COMMIT_MESSAGE" value="Copy pasted what I have in class from 02/04/25" />
   </component>
 </project>
