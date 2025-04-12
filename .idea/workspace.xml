@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Copy pasted what I have in class from 02/04/25">
-      <change beforePath="$PROJECT_DIR$/gates.py" beforeDir="false" afterPath="$PROJECT_DIR$/gates.py" afterDir="false" />
+    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Refactored a bit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -219,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744450102710</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Refactored a bit">
+      <option name="closed" value="true" />
+      <created>1744450871834</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1744450871834</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,6 +258,7 @@
     <MESSAGE value="Added gitignore" />
     <MESSAGE value="WIP" />
     <MESSAGE value="Copy pasted what I have in class from 02/04/25" />
-    <option name="LAST_COMMIT_MESSAGE" value="Copy pasted what I have in class from 02/04/25" />
+    <MESSAGE value="Refactored a bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored a bit" />
   </component>
 </project>

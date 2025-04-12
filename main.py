@@ -2,6 +2,10 @@ import numpy as np
 import gates
 import scipy as sp
 
+# noinspection DuplicatedCode
+# noinspection DuplicateLiteral
+# noinspection PyMethodMayBeStatic
+# noinspection SpellCheckingInspection
 class QRegistry:
     def __init__(self, num_qubits):
         arr = np.zeros((2 ** num_qubits, 1), dtype=np.complex64)
@@ -13,44 +17,25 @@ class QRegistry:
     def get_state(self):
         return self.state
 
-    def apply_gate(self, gate):
-        if gate.shape[0] != gate.shape[1]:
-            raise ValueError("Gate must be a square (equal number of rows and columns)")
-        if int(self.state.shape[0]) != int(gate.shape[0]):
-            raise ValueError("Gate must have the same number of rows as the state")
-        self.state = gate.dot(self.state)
-        return self
-
     def apply_unitary_gate(self, gate, target):
-        if gate.shape[0] != gate.shape[1] or gate.shape[0] != 2:
-            raise ValueError("Gate must be 2x2")
-        if target > self.num_qubits:
-            raise ValueError("Target qbit is outside the register")
+        self.__check_apply_unitary_gate_inputs(gate, target)
         self.state = gate.dot(self.state)
         return self
 
-    def apply_gate_sparse(self, gate, target):
-        if gate.shape[0] != gate.shape[1]:
-            raise ValueError("Gate must be a square")
+    def apply_gate(self, gate, target):
+        self.__check_apply_gate_inputs(gate, target)
         gate_size = int(np.log2(gate.shape[0]))
-        gate = sp.sparse.csr_array(gate)
-        if target > self.num_qubits - 1 - (gate_size - 1):
-            raise ValueError(
-                "Target qbit is outside the register. Target qbit: " + str(target) + "; gate size: " + str(gate_size))
         full_gate = self.__add_left_identity_gates(gate, target)
         full_gate = self.__add_right_identity_gates(full_gate, self.num_qubits - target - 1 - (gate_size - 1))
         self.state = full_gate.dot(self.state)
         return self
 
-    def apply_gate(self, gate, target):
-        if gate.shape[0] != gate.shape[1]:
-            raise ValueError("Gate must be a square")
+    def apply_gate_sparse(self, gate, target):
+        self.__check_apply_gate_inputs(gate, target)
         gate_size = int(np.log2(gate.shape[0]))
-        if target > self.num_qubits - 1 - (gate_size - 1):
-            raise ValueError(
-                "Target qbit is outside the register. Target qbit: " + str(target) + "; gate size: " + str(gate_size))
-        full_gate = self.__add_left_identity_gates(gate, target)
-        full_gate = self.__add_right_identity_gates(full_gate, self.num_qubits - target - 1 - (gate_size - 1))
+        gate = sp.sparse.csr_array(gate)
+        full_gate = self.__add_left_identity_gates_sparse(gate, target)
+        full_gate = self.__add_right_identity_gates_sparse(full_gate, self.num_qubits - target - 1 - (gate_size - 1))
         self.state = full_gate.dot(self.state)
         return self
 
@@ -65,16 +50,16 @@ class QRegistry:
     def qbit_prob(self, target):
         if target > self.num_qubits - 1:
             raise ValueError("Target qbit is outside the register. Target qbit: " + str(target))
-        isOne = True
-        period = 2 ** (target)
-        totalProb = 0
+        is_one = True
+        period = 2 ** target
+        total_prob = 0
         for i in range(0, self.state.size):
-            if (i % period == 0):
-                isOne = not isOne
-            if (isOne):
-                totalProb += self.value_prob(i)
-        totalProb = self.get_fixed_total_prob(totalProb)
-        return totalProb
+            if i % period == 0:
+                is_one = not is_one
+            if is_one:
+                total_prob += self.value_prob(i)
+        total_prob = self.get_fixed_total_prob(total_prob)
+        return total_prob
 
     def get_fixed_total_prob(self, total_prob):
         max_error = 0.001
@@ -110,6 +95,20 @@ class QRegistry:
         value = 1 if self.rng.random() < prob_one else 0
         self.collapse(target, value, value)
         return self, value
+
+    def __check_apply_unitary_gate_inputs(self, gate, target):
+        if gate.shape[0] != gate.shape[1] or gate.shape[0] != 2:
+            raise ValueError("Gate must be 2x2")
+        if target > self.num_qubits:
+            raise ValueError("Target qbit is outside the register")
+
+    def __check_apply_gate_inputs(self, gate, target):
+        gate_size = int(np.log2(gate.shape[0]))
+        if gate.shape[0] != gate.shape[1]:
+            raise ValueError("Gate must be a square")
+        if target > self.num_qubits - 1 - (gate_size - 1):
+            raise ValueError(
+                "Target qbit is outside the register. Target qbit: " + str(target) + "; gate size: " + str(gate_size))
 
     def __add_left_identity_gates(self, gate, qtty):
         for _ in range(qtty):
