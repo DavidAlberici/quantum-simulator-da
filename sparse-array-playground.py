@@ -1,3 +1,6 @@
+import numpy as np
+import scipy as sp
+import gates
 
 def basic_sparse_array_methods():
     arr = sp.sparse.csr_array((2, 2))  # create 2x2 matrix
@@ -12,8 +15,8 @@ def basic_sparse_array_methods():
 
 
 def kron_in_sparse_array():
-    h_sparse = sp.sparse.csr_array(Gates.h)
-    i_sparse = sp.sparse.csr_array(Gates.I(1))
+    h_sparse = sp.sparse.csr_array(gates.h)
+    i_sparse = sp.sparse.csr_array(gates.I(1))
     print(sp.sparse.kron(h_sparse, i_sparse))
     # print(np.kron(h_sparse, i_sparse))
 
