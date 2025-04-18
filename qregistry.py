@@ -65,7 +65,6 @@ class QRegistry:
             raise ValueError("Value must be positive. Value: " + str(value))
         return (self.state[value] * np.conjugate(self.state[value])).real
 
-    # Probabilidad de obtener el valor 1 en el qubit target
     def qbit_prob(self, target):
         """
         Probability a specific qbit has of being one
@@ -82,7 +81,7 @@ class QRegistry:
                 is_one = not is_one
             if is_one:
                 total_prob += self.value_prob(i)
-        total_prob = self.__get_fixed_total_prob(total_prob)
+        total_prob = self.__correct_probability_value(total_prob)
         return total_prob
 
     def collapse(self, target, value, prob_one=None):
@@ -99,12 +98,26 @@ class QRegistry:
         :param prob_one: the probability the target qbit has of being 1
         :return: the modified registry
         """
-        if target > self.num_qubits - 1:
-            raise ValueError("Target qbit is outside the register. Target qbit: " + str(target))
+        self.__check_collapse_inputs(target)
+        is_one = True
+        period = 2 ** target
+        for i in range(0, self.state.size):
+            if i % period == 0:
+                is_one = not is_one
+            if (is_one and value == 0) or (not is_one and value == 1):
+                self.state[i] = 0
+
+        # Calculates the norm of the state, and then divide the whole state vector by it to normalize it
+        # If the "prob_one" parameter is provided, then the norm can be easily calculated from it.
         if prob_one is None:
-            return self.__collapse_without_prob(target, value)
+            norm = np.linalg.norm(self.state)
+        elif value == 1:
+            norm = prob_one ** (1 / 2)
         else:
-            return self.__collapse_with_prob(target, value, prob_one)
+            norm = (1 - prob_one) ** (1 / 2)
+        for i in range(self.state.size):
+            self.state[i] /= norm
+        return self
 
     def get_density_matrix(self):
         """
@@ -169,7 +182,7 @@ class QRegistry:
             gate = sp.sparse.kron(gate, gates.I_sparse(1), format="csr")
         return gate
 
-    def __get_fixed_total_prob(self, total_prob):
+    def __correct_probability_value(self, total_prob):
         max_error = 0.001
         if total_prob > 1 > total_prob - max_error:
             return 1
@@ -178,33 +191,6 @@ class QRegistry:
         else:
             return total_prob
 
-    def __collapse_without_prob(self, target, value):
-        is_one = True
-        period = 2 ** target
-        for i in range(0, self.state.size):
-            if i % period == 0:
-                is_one = not is_one
-            if (is_one and value == 0) or (not is_one and value == 1):
-                self.state[i] = 0
-        norm = np.linalg.norm(self.state)
-        for i in range(self.state.size):
-            self.state[i] /= norm
-        return self
-
-    def __collapse_with_prob(self, target, value, prob_one):
-        is_one = True
-        period = 2 ** target
-        for i in range(0, self.state.size):
-            if i % period == 0:
-                is_one = not is_one
-            if (is_one and value == 0) or (not is_one and value == 1):
-                self.state[i] = 0
-
-        amp = 0
-        if value == 1:
-            amp = prob_one ** (1 / 2)
-        else:
-            amp = (1 - prob_one) ** (1 / 2)
-        for i in range(self.state.size):
-            self.state[i] /= amp
-        return self
+    def __check_collapse_inputs(self, target):
+        if target > self.num_qubits - 1:
+            raise ValueError("Target qbit is outside the register. Target qbit: " + str(target))
