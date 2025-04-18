@@ -128,15 +128,17 @@ class QRegistry:
         else:
             return theta, phi
 
-    def measure(self, target):
+    def measure(self, target, rng=None):
         """
         Measures the specified target qbit
         :param target:
+        :param rng: Optional, the randum number generator to use. Must implement rng.random() method
         :return: the modified registry and the measured value
         """
         prob_one = self.qbit_prob(target)
-        value = 1 if self.rng.random() < prob_one else 0
-        self.collapse(target, value, value)
+        random_number = self.rng.random() if rng is None else rng.random()
+        value = 1 if random_number < prob_one else 0
+        self.collapse(target, value, prob_one)
         return self, value
 
     def __check_apply_gate_inputs(self, gate, target):
