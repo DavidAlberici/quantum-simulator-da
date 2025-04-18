@@ -1,7 +1,7 @@
 import numpy as np
 import scipy as sp
 import gates
-from multiprocessing.dummy import Pool as ThreadPool
+import multiprocessing as mp
 
 # noinspection DuplicatedCode
 # noinspection DuplicateLiteral
@@ -56,7 +56,7 @@ class QRegistry:
     def value_prob(self, value):
         """
         Probability of obtaining a specific value after reading the registry.
-        :param value: A positive number that must be equal or smaller than 2^n. Being "n" the number of qbits
+        :param value: A positive number equal or smaller than 2^n. Being "n" the number of qbits
         :return: the probability of getting the value. As a number between 0 and 1
         """
         if value >= self.state.size:
@@ -178,30 +178,39 @@ class QRegistry:
 
     def collapse_parallel(self, target, value, start_idx, end_idx):
         """
-        Very similar to collapse, but allows to choose a range of qbits in the statevector. Does not execute anything
-        in parallel, but a function that does can have parallel threads call this function with different ranges
+        Find the values (qbit indices) that should be set to 0 after forcing the target qbit to collapse to a value,
+        0 or 1.
 
-        IMPORTANT: This is not a full collapse, it leaves the self.state (statevector) unnormalized
-        :param target:
-        :param value:
+        Per example a 2qbit register just initialized has a 100% probability of measuring 0 in both qbits,
+        using this method with value=1 on qbit 0, will return [0,2], indicating that those two possible values
+        should not be possible after the collapse; in other words, those 2 values should have amplitude 0 in the
+        statevector.
+
+        IMPORTANT: This function only returns the indices/values that should be set to 0, it does not set anything.
+
+        :param target: the qbit that will be forced to collapse to a value
+        :param value: either 0 or 1, the value to which the qbit will collapse
         :param start_idx:
         :param end_idx:
-        :return:
+        :return: the list of values/indices that should be set to 0
         """
         period = 2 ** target
         flips = start_idx // period
         is_one = (flips % 2) == 0
+        indexes_to_0 = []
         for i in range(start_idx, end_idx + 1):
             if i % period == 0:
                 is_one = not is_one
             if (is_one and value == 0) or (not is_one and value == 1):
-                self.state[i] = 0
-        return self
+                indexes_to_0.append(i)
+        return indexes_to_0
 
     def measure_parallel(self, target, rng=None, pool_size=4):
-        if self.num_qubits < 8:
+        if self.num_qubits < 4 or pool_size > 2**self.num_qubits:
             return self.measure(target, rng)
-        with ThreadPool(pool_size) as pool:
+        # Not ideal to create pool for every measure, has not had the time to improve it!
+        # Still seems to improve measurements for 20 qbits systems (initialized at 0)
+        with mp.Pool(pool_size) as pool:
             state_size = self.state.size
             chunk_size = state_size // pool_size
             remainder = state_size % pool_size
@@ -225,7 +234,7 @@ class QRegistry:
             # Collapse in parallel
             futures = [pool.apply_async(self.collapse_parallel, (target, value, s, e)) for s, e in chunks]
             for f in futures:
-                f.get()
+                self.state[f.get()] = 0
 
         # Normalize the state
         if value == 1:

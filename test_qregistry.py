@@ -2,6 +2,7 @@ from unittest import TestCase
 import qregistry
 import gates
 import numpy as np
+import time
 
 tolerance = 0.0001 #0.01% for percentages, 0.0001 for scalars
 class TestQRegistry(TestCase):
@@ -90,7 +91,7 @@ class TestQRegistry(TestCase):
             q = self.__get_qregistry_in_bell_state()
             _, measured = q.measure(0, rng)
             measurements[measured] = measurements.get(measured) + 1
-        print(measurements[0]/executions)
+        # print(measurements[0]/executions)
         self.__assert_two_floats_are_close(
             50,
             measurements[0]/executions*100,
@@ -177,9 +178,71 @@ class TestQRegistry(TestCase):
         assert q.measure_parallel(0)[1] == 1
         assert q.measure_parallel(1)[1] == 1
 
+    def test_performance_measure_vs_measure_parallel__big_registry_with_a_bell_state(self):
+        total_qbits = 14
+        measured_qbit = 6
+        seed = 1001
+
+        # Non-parallel measure
+        ts1 = time.time()*1000
+        q = qregistry.QRegistry(total_qbits)
+        q.apply_gate(gates.h, measured_qbit)
+        q.apply_gate(gates.cnot, measured_qbit)
+        ts2 = time.time()*1000
+        print(f"initializing the state in superposition took: {ts2 - ts1:.2f}ms")
+
+        rng = np.random.default_rng(seed)
+        ts1 = time.time()*1000
+        q.measure(measured_qbit, rng)
+        ts2 = time.time()*1000
+        print(f"non-parallel measure (qbit 6) took: {ts2 - ts1:.2f}ms")
+
+        # Parallel measure
+        ts1 = time.time()*1000
+        q = qregistry.QRegistry(total_qbits)
+        q.apply_gate(gates.h, measured_qbit)
+        q.apply_gate(gates.cnot, measured_qbit)
+        ts2 = time.time()*1000
+        print(f"initializing the state in superposition took: {ts2 - ts1:.2f}ms")
+
+        rng = np.random.default_rng(seed)
+        ts1 = time.time()*1000
+        q.measure_parallel(measured_qbit, rng)
+        ts2 = time.time()*1000
+        print(f"parallel measure (qbit 6) took: {ts2 - ts1:.2f}ms")
+
+    def test_performance_measure_vs_measure_parallel__simple_state(self):
+        total_qbits = 21
+        measured_qbit = 6
+        seed = 1001
+
+        # Non-parallel measure
+        ts1 = time.time()*1000
+        q = qregistry.QRegistry(total_qbits)
+        ts2 = time.time()*1000
+        print(f"initializing the state took: {ts2 - ts1:.2f}ms")
+
+        rng = np.random.default_rng(seed)
+        ts1 = time.time()*1000
+        q.measure(measured_qbit, rng)
+        ts2 = time.time()*1000
+        print(f"non-parallel measure (qbit 6) took: {ts2 - ts1:.2f}ms")
+
+        # Parallel measure
+        ts1 = time.time()*1000
+        q = qregistry.QRegistry(total_qbits)
+        ts2 = time.time()*1000
+        print(f"initializing the state took: {ts2 - ts1:.2f}ms")
+
+        rng = np.random.default_rng(seed)
+        ts1 = time.time()*1000
+        q.measure_parallel(measured_qbit, rng)
+        ts2 = time.time()*1000
+        print(f"parallel measure (qbit 6) took: {ts2 - ts1:.2f}ms")
+
     def __assert_two_floats_are_close(self, expected, actual, message = None, tol = tolerance):
         if message is None:
-            assert np.allclose(expected, actual, atol=tol)
+            assert np.allclose(expected, actual, atol=tol), f". Expected value: {expected}, actual value: {actual}"
         else:
             assert np.allclose(expected, actual, atol=tol), message + f". Expected value: {expected}, actual value: {actual}"
 
