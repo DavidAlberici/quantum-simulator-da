@@ -1,6 +1,7 @@
 import numpy as np
 import scipy as sp
 import gates
+from multiprocessing.dummy import Pool as ThreadPool
 
 # noinspection DuplicatedCode
 # noinspection DuplicateLiteral
@@ -152,6 +153,87 @@ class QRegistry:
         random_number = self.rng.random() if rng is None else rng.random()
         value = 1 if random_number < prob_one else 0
         self.collapse(target, value, prob_one)
+        return self, value
+
+    def qbit_prob_parallel(self, target, start_idx, end_idx):
+        """
+        Very similar to qbit_prob, but allows to choose a range of qbits in the statevector. Does not execute anything
+        in parallel, but a function that does can have parallel threads call this function with different ranges
+
+        :param target:
+        :param start_idx:
+        :param end_idx:
+        :return:
+        """
+        period = 2 ** target
+        flips = start_idx // period
+        is_one = (flips % 2) == 0
+        total_prob = 0.0
+        for i in range(start_idx, end_idx + 1):
+            if i % period == 0:
+                is_one = not is_one
+            if is_one:
+                total_prob += self.value_prob(i)
+        return total_prob
+
+    def collapse_parallel(self, target, value, start_idx, end_idx):
+        """
+        Very similar to collapse, but allows to choose a range of qbits in the statevector. Does not execute anything
+        in parallel, but a function that does can have parallel threads call this function with different ranges
+
+        IMPORTANT: This is not a full collapse, it leaves the self.state (statevector) unnormalized
+        :param target:
+        :param value:
+        :param start_idx:
+        :param end_idx:
+        :return:
+        """
+        period = 2 ** target
+        flips = start_idx // period
+        is_one = (flips % 2) == 0
+        for i in range(start_idx, end_idx + 1):
+            if i % period == 0:
+                is_one = not is_one
+            if (is_one and value == 0) or (not is_one and value == 1):
+                self.state[i] = 0
+        return self
+
+    def measure_parallel(self, target, rng=None, pool_size=4):
+        if self.num_qubits < 8:
+            return self.measure(target, rng)
+        with ThreadPool(pool_size) as pool:
+            state_size = self.state.size
+            chunk_size = state_size // pool_size
+            remainder = state_size % pool_size
+            chunks = []
+            start = 0
+            for i in range(pool_size):
+                end = start + chunk_size + (1 if i < remainder else 0)
+                end = min(end, state_size)
+                chunks.append((start, end - 1))
+                start = end
+
+            # Calculate prob_one in parallel
+            futures = [pool.apply_async(self.qbit_prob_parallel, (target, s, e)) for s, e in chunks]
+            prob_one = sum(f.get() for f in futures)
+            prob_one = self.__correct_probability_value(prob_one)
+
+            # Determine measured value
+            random_number = self.rng.random() if rng is None else rng.random()
+            value = 1 if random_number < prob_one else 0
+
+            # Collapse in parallel
+            futures = [pool.apply_async(self.collapse_parallel, (target, value, s, e)) for s, e in chunks]
+            for f in futures:
+                f.get()
+
+        # Normalize the state
+        if value == 1:
+            amp = np.sqrt(prob_one)
+        else:
+            amp = np.sqrt(1 - prob_one)
+        self.state /= amp
+
         return self, value
 
     def __check_apply_gate_inputs(self, gate, target):
