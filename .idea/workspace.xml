@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Fixed bug in measure function and added more tests">
-      <change afterPath="$PROJECT_DIR$/test_misc.py" afterDir="false" />
+    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Added parallel version of &quot;measure&quot; function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qregistry.py" beforeDir="false" afterPath="$PROJECT_DIR$/qregistry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_qregistry.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_qregistry.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +63,13 @@
     "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_eight_qbit_registry.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case.executor": "Run",
+    "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry.executor": "Run",
+    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel.executor": "Run",
+    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__big_registry_with_a_bell_state.executor": "Run",
+    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__simple_state.executor": "Run",
+    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__state_in_superposition.executor": "Run",
+    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_qbit_prob_vs_qbit_prob_parallel.executor": "Run",
+    "Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_big_simple_state.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_simple_bell_state.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_simple_state.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.test_tetstst.executor": "Run",
@@ -79,22 +86,7 @@
     "ignore.virus.scanning.warn.message": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test_qregistry.TestQRegistry">
-    <configuration name="Python tests for test_misc.TestMisc" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="simulador-da" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_misc.TestMisc&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry">
     <configuration name="Python tests for test_qregistry.TestQRegistry" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="simulador-da" />
       <option name="ENV_FILES" value="" />
@@ -107,21 +99,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_qregistry.TestQRegistry&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_qregistry.TestQRegistry.test__parse_state_vector_positions_where_target_qbit_is_one" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="simulador-da" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test__parse_state_vector_positions_where_target_qbit_is_one&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -140,7 +117,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_qregistry.TestQRegistry.test_tetstst" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="simulador-da" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -151,17 +128,47 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_tetstst&quot;" />
+      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="simulador-da" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="simulador-da" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry" />
         <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry" />
-        <item itemvalue="Python tests.Python tests for test_misc.TestMisc" />
-        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test__parse_state_vector_positions_where_target_qbit_is_one" />
-        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_tetstst" />
         <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_eight_qbit_registry" />
+        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case" />
+        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +276,47 @@
       <option name="project" value="LOCAL" />
       <updated>1744970667437</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Minor refactors (merged functions, renames...)">
+      <option name="closed" value="true" />
+      <created>1744976010703</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744976010703</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Modified README.md, so professor knows where to look">
+      <option name="closed" value="true" />
+      <created>1744976034783</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744976034783</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Created possible improvement to the way I parse the state vector (for now just implemented in test_misc.py file)">
+      <option name="closed" value="true" />
+      <created>1744976090920</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1744976090920</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated pycharm workspace.xml, probably should just gitignore it in the future">
+      <option name="closed" value="true" />
+      <created>1744976123252</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1744976123252</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added parallel version of &quot;measure&quot; function">
+      <option name="closed" value="true" />
+      <created>1744977664479</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1744977664479</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -306,6 +353,11 @@
     <MESSAGE value="Added proper documentation to implemented methods" />
     <MESSAGE value="Deleted unused test method" />
     <MESSAGE value="Fixed bug in measure function and added more tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug in measure function and added more tests" />
+    <MESSAGE value="Minor refactors (merged functions, renames...)" />
+    <MESSAGE value="Modified README.md, so professor knows where to look" />
+    <MESSAGE value="Created possible improvement to the way I parse the state vector (for now just implemented in test_misc.py file)" />
+    <MESSAGE value="Updated pycharm workspace.xml, probably should just gitignore it in the future" />
+    <MESSAGE value="Added parallel version of &quot;measure&quot; function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added parallel version of &quot;measure&quot; function" />
   </component>
 </project>
