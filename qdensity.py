@@ -54,6 +54,33 @@ class QDensity:
     def get_density_matrix(self) -> np.ndarray:
         return self.density_matrix
 
+    def value_prob(self, qubit: int, value: int) -> float:
+        """Return P(measuring *value* on *qubit*)."""
+        if not 0 <= qubit < self.num_qubits:
+            raise ValueError("Qubit index out of range.")
+        if value not in (0, 1):
+            raise ValueError("Measurement value must be 0 or 1.")
+
+        mask = np.array([(i >> qubit) & 1 == value for i in range(self.dim)])
+        # Born rule  (here P projects onto the masked basis states)
+        return float(np.sum(self.density_matrix[mask][:, mask]).real)
+
+    def measure(self, target: int) -> int:
+        """Measure *qubit* (0=LSB), collapse the register, return 0 or 1."""
+        # Draw the outcome
+        p0      = self.value_prob(target, 0)
+        outcome = 0 if np.random.random() < p0 else 1
+        prob    = self.value_prob(target, outcome)
+
+        # Collapse ρ  →  PρP / prob
+        mask = np.array([(i >> target) & 1 == outcome for i in range(self.dim)])
+        self.density_matrix[~mask, :] = 0        # remove rows
+        self.density_matrix[:, ~mask] = 0        # remove columns
+        if prob > 0:
+            self.density_matrix /= prob          # renormalise
+
+        return outcome
+
     @staticmethod
     def __add_left_identity_gates(gate: np.ndarray, qtty: int) -> np.ndarray:
         for _ in range(qtty):

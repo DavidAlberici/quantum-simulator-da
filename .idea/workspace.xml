@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Added computational_cost.md">
+    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Added examples in main.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qdensity.py" beforeDir="false" afterPath="$PROJECT_DIR$/qdensity.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,55 +39,55 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.executor": "Run",
-    "Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__return_correct_state_size.executor": "Run",
-    "Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_calculate_amplitudes_correctly.executor": "Run",
-    "Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_merge_qbits_lists_correctly.executor": "Run",
-    "Python tests.Python tests for test_misc.TestMisc.executor": "Run",
-    "Python tests.Python tests for test_qdensity.TestQDensity.executor": "Run",
-    "Python tests.Python tests for test_qdensity.TestQDensity.test_apply_gate__should_work_for_simple_bell_state.executor": "Run",
-    "Python tests.Python tests for test_qdensity.TestQDensity.test_constructor__when_statevectors_are_provided__then_initialize_accordingly.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test__parse_state_vector_positions_where_target_qbit_is_one.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_gate.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_gate__should_work_for_simple_bell_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_gate_sparse__should_work_for_simple_bell_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_unitary_gate.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_collapse__when_no_probability_of_one_is_specified__should_work_for_simple_bell_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work_after_applying_x_and_h_gate.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work_after_applying_x_gate.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work_for_initial_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__when_qbit_is_0__should_work.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_init__should_initialize_qregistry_to_0.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_eight_qbit_registry.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__big_registry_with_a_bell_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__simple_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__state_in_superposition.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_qbit_prob_vs_qbit_prob_parallel.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_big_simple_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_simple_bell_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_simple_state.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_tetstst.executor": "Run",
-    "Python tests.Python tests for test_qregistry.TestQRegistry.test_value_prob__should_work_for_simple_bell_state.executor": "Run",
-    "Python tests.Python tests in test2.py.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.main2.executor": "Run",
-    "Python.q_registry_qbit.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "simple-version",
-    "ignore.virus.scanning.warn.message": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__return_correct_state_size.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_calculate_amplitudes_correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_merge_qbits_lists_correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_misc.TestMisc.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qdensity.TestQDensity.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qdensity.TestQDensity.test_apply_gate__should_work_for_simple_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qdensity.TestQDensity.test_constructor__when_statevectors_are_provided__then_initialize_accordingly.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test__parse_state_vector_positions_where_target_qbit_is_one.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_gate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_gate__should_work_for_simple_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_gate_sparse__should_work_for_simple_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_unitary_gate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_collapse__when_no_probability_of_one_is_specified__should_work_for_simple_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work_after_applying_x_and_h_gate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work_after_applying_x_gate.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__should_work_for_initial_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_get_bloch_coords__when_qbit_is_0__should_work.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_init__should_initialize_qregistry_to_0.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_eight_qbit_registry.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__big_registry_with_a_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__simple_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_measure_vs_measure_parallel__state_in_superposition.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_performance_qbit_prob_vs_qbit_prob_parallel.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_big_simple_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_simple_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_qbit_prob__should_work_for_simple_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_tetstst.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_qregistry.TestQRegistry.test_value_prob__should_work_for_simple_bell_state.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test2.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.q_registry_qbit.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;first-version&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="simulador-da" />
@@ -356,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745034965553</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added examples in main.py">
+      <option name="closed" value="true" />
+      <created>1745036232973</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1745036232973</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,7 +379,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="simple-version" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -402,6 +411,7 @@
     <MESSAGE value="." />
     <MESSAGE value="Added qdensity class and its tests" />
     <MESSAGE value="Added computational_cost.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added computational_cost.md" />
+    <MESSAGE value="Added examples in main.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added examples in main.py" />
   </component>
 </project>

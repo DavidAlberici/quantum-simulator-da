@@ -84,3 +84,18 @@ if __name__ == '__main__':
 
     # Use example: Getting the density matrix
     print("Current density matrix:\n", qd.get_density_matrix())
+
+    # Use example: Get probability of a qubit value
+    qd = QDensity(2)
+    qd.apply_gate(gates.h, 0)         # Create superposition on qubit 0
+    prob_0 = qd.value_prob(0, 0)
+    prob_1 = qd.value_prob(0, 1)
+    print(f"Probability qubit 0 is 0: {prob_0:.2f}, is 1: {prob_1:.2f}")
+
+    # Use example: Measure
+    qd = QDensity(2)  # start in |00⟩
+    qd.apply_gate(gates.h, 1)
+    print("Before measurement:\n", qd.get_density_matrix())
+    measured = qd.measure(1)  # measure qubit‑1; register collapses automatically
+    print("Measured qbit 1:", measured)
+    print("After measurement:\n", qd.get_density_matrix())
