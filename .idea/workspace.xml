@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Added parallel version of &quot;measure&quot; function">
+    <list default="true" id="e479e732-9fe1-4fbe-bbd0-c5baf015b6bd" name="Changes" comment="Added computational_cost.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qregistry.py" beforeDir="false" afterPath="$PROJECT_DIR$/qregistry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_misc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_qregistry.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_qregistry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +45,9 @@
     "Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_calculate_amplitudes_correctly.executor": "Run",
     "Python tests.Python tests for q_registry_qbit_test.TestQRegistryPartialState.test_merge_states__should_merge_qbits_lists_correctly.executor": "Run",
     "Python tests.Python tests for test_misc.TestMisc.executor": "Run",
+    "Python tests.Python tests for test_qdensity.TestQDensity.executor": "Run",
+    "Python tests.Python tests for test_qdensity.TestQDensity.test_apply_gate__should_work_for_simple_bell_state.executor": "Run",
+    "Python tests.Python tests for test_qdensity.TestQDensity.test_constructor__when_statevectors_are_provided__then_initialize_accordingly.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.test__parse_state_vector_positions_where_target_qbit_is_one.executor": "Run",
     "Python tests.Python tests for test_qregistry.TestQRegistry.test_apply_gate.executor": "Run",
@@ -86,7 +87,74 @@
     "ignore.virus.scanning.warn.message": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="simulador-da" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_qdensity.TestQDensity" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="simulador-da" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_qdensity.TestQDensity&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_qdensity.TestQDensity.test_apply_gate__should_work_for_simple_bell_state" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="simulador-da" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_qdensity.TestQDensity.test_apply_gate__should_work_for_simple_bell_state&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_qdensity.TestQDensity.test_constructor__when_statevectors_are_provided__then_initialize_accordingly" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="simulador-da" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_qdensity.TestQDensity.test_constructor__when_statevectors_are_provided__then_initialize_accordingly&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_qregistry.TestQRegistry" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="simulador-da" />
       <option name="ENV_FILES" value="" />
@@ -102,73 +170,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_eight_qbit_registry" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="simulador-da" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_measure__should_work_for_eight_qbit_registry&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="simulador-da" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="simulador-da" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="simulador-da" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure_parallel__should_work_for_eight_qbit_registry" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Python tests for test_qdensity.TestQDensity.test_constructor__when_statevectors_are_provided__then_initialize_accordingly" />
+        <item itemvalue="Python tests.Python tests for test_qdensity.TestQDensity.test_apply_gate__should_work_for_simple_bell_state" />
+        <item itemvalue="Python tests.Python tests for test_qdensity.TestQDensity" />
         <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry" />
-        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_eight_qbit_registry" />
-        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_case" />
-        <item itemvalue="Python tests.Python tests for test_qregistry.TestQRegistry.test_measure__should_work_for_simple_bell_state" />
       </list>
     </recent_temporary>
   </component>
@@ -316,7 +324,39 @@
       <option name="project" value="LOCAL" />
       <updated>1744977664479</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fixed bug in measure_parallel, added &quot;performance&quot; tests (not automated, they just print ms period values)">
+      <option name="closed" value="true" />
+      <created>1744989402765</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1744989402765</updated>
+    </task>
+    <task id="LOCAL-00018" summary=".">
+      <option name="closed" value="true" />
+      <created>1744989409878</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1744989409878</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added qdensity class and its tests">
+      <option name="closed" value="true" />
+      <created>1745033661421</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1745033661421</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added computational_cost.md">
+      <option name="closed" value="true" />
+      <created>1745034965553</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1745034965553</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -358,6 +398,10 @@
     <MESSAGE value="Created possible improvement to the way I parse the state vector (for now just implemented in test_misc.py file)" />
     <MESSAGE value="Updated pycharm workspace.xml, probably should just gitignore it in the future" />
     <MESSAGE value="Added parallel version of &quot;measure&quot; function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added parallel version of &quot;measure&quot; function" />
+    <MESSAGE value="Fixed bug in measure_parallel, added &quot;performance&quot; tests (not automated, they just print ms period values)" />
+    <MESSAGE value="." />
+    <MESSAGE value="Added qdensity class and its tests" />
+    <MESSAGE value="Added computational_cost.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added computational_cost.md" />
   </component>
 </project>
