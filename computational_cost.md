@@ -1,6 +1,10 @@
 # Computing‑Cost Analysis
 
-Below each heading you will find the original method, a short rationale of the dominant work that the interpreter performs, and the resulting **Big‑O / Ω** bound expressed as a function of *n* (the number of qubits, so the state‑vector length is 2ⁿ).
+Below each heading you will find the original method, a short rationale of the dominant work that the interpreter performs, 
+and the resulting **Big‑O / Ω** bound expressed as a function of *n* (the number of qubits, so the state‑vector length is 2ⁿ).
+
+Note: Although strictly speaking 4^n can be expressed as 2*2^n and therefore 2^n, I preferred to leave it as 4^n, because
+there is where I have a possible bottleneck
 
 ## __init__
 
